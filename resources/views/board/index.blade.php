@@ -1,13 +1,13 @@
-@extends('products.layout')
+@extends('board.layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 5.7 CRUD Example from scratch - ItSolutionStuff.com</h2>
+                <h2>All Messages</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('board.create') }}"> Leave A Message</a>
             </div>
         </div>
     </div>
@@ -21,11 +21,11 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>Details</th>
+            <th>Subject</th>
+            <th>Content</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($prod as $product)
+        @foreach ($messages as $product)
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $product->name }}</td>
@@ -47,6 +47,6 @@
         @endforeach
     </table>
 
-    {!! $pro->links() !!}
+    {!! $messages->links() !!}
 
 @endsection

@@ -1,13 +1,13 @@
-@extends('products.layout')
+@extends('game.layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 5.7 CRUD Example from scratch - ItSolutionStuff.com</h2>
+                <h2>I want to play a game, you have to make a choice.</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('game.create') }}"> Enter Your Guess</a>
             </div>
         </div>
     </div>
@@ -21,21 +21,21 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>Details</th>
+            <th>Guess</th>
+            <th>Hint</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($prod as $product)
+        @foreach ($guess as $product)
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->detail }}</td>
                 <td>
-                    <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                    <form action="{{ route('game.destroy',$product->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('game.show',$product->id) }}">Show</a>
 
-                        <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('game.edit',$product->id) }}">Edit</a>
 
                         @csrf
                         @method('DELETE')
@@ -47,6 +47,6 @@
         @endforeach
     </table>
 
-    {!! $pro->links() !!}
+    {!! $products->links() !!}
 
 @endsection

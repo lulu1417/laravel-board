@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Guess;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class GuessController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $pro = Product::latest()->paginate(5);
-        return view('products.index',compact('pro'))
+        $guess = Guess::latest()->paginate(5);
+
+        return view('game.index',compact('guess'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('game.create');
     }
 
     /**
@@ -44,8 +45,8 @@ class ProductController extends Controller
 
         Product::create($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success','Product created successfully.');
+        return redirect()->route('game.index')
+            ->with('success','Entered successfully.');
     }
 
     /**
@@ -56,7 +57,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show',compact('product'));
+        return view('game.show',compact('product'));
     }
 
     /**
@@ -67,7 +68,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        return view('game.edit',compact('product'));
     }
 
     /**
@@ -86,7 +87,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('products.index')
+        return redirect()->route('game.index')
             ->with('success','Product updated successfully');
     }
 
@@ -100,7 +101,8 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')
+        return redirect()->route('game.index')
             ->with('success','Product deleted successfully');
     }
 }
+

@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Product;
+use App\Test;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class BoardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $pro = Product::latest()->paginate(5);
-        return view('products.index',compact('pro'))
+        $messages = Test::latest()->paginate(5);
+//        dd($messages);
+
+        return view('board.index',compact('messages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('board.create');
     }
 
     /**
@@ -39,68 +40,70 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'subject' => 'required',
+            'content' => 'required',
         ]);
 
-        Product::create($request->all());
+        Test::create($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success','Product created successfully.');
+        return redirect()->route('board.index')
+            ->with('success','message created successfully.');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Test  $board
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Test $board)
     {
-        return view('products.show',compact('product'));
+        return view('board.show',compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Test $board
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Test $board)
     {
-        return view('products.edit',compact('product'));
+        return view('board.edit',compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Test $board
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Test $board)
     {
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
         ]);
 
-        $product->update($request->all());
+        $board->update($request->all());
 
-        return redirect()->route('products.index')
-            ->with('success','Product updated successfully');
+        return redirect()->route('board.index')
+            ->with('success','Message updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Test $board
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Test $board)
     {
-        $product->delete();
+        $board->delete();
 
-        return redirect()->route('products.index')
-            ->with('success','Product deleted successfully');
+        return redirect()->route('board.index')
+            ->with('success','Message deleted successfully');
     }
 }
