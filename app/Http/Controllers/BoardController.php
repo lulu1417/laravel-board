@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Test;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class BoardController extends Controller
         $messages = Test::latest()->paginate(5);
 //        dd($messages);
 
-        return view('board.index',compact('messages'))
+        return view('board.index', compact('messages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -33,51 +34,56 @@ class BoardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
             'subject' => 'required',
             'content' => 'required',
         ]);
 
-        Test::create($request->all());
+        Test::create([
+            'name' => 'lulu',
+            'subject' => $request['subject'],
+            'content' => $request['content'],
+
+            ]
+        );
 
         return redirect()->route('board.index')
-            ->with('success','message created successfully.');
+            ->with('success', 'message created successfully.');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Test  $board
+     * @param \App\Test $board
      * @return \Illuminate\Http\Response
      */
     public function show(Test $board)
     {
-        return view('board.show',compact('product'));
+        return view('board.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Test $board
+     * @param \App\Test $board
      * @return \Illuminate\Http\Response
      */
     public function edit(Test $board)
     {
-        return view('board.edit',compact('product'));
+        return view('board.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Test $board
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Test $board
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Test $board)
@@ -90,13 +96,13 @@ class BoardController extends Controller
         $board->update($request->all());
 
         return redirect()->route('board.index')
-            ->with('success','Message updated successfully');
+            ->with('success', 'Message updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Test $board
+     * @param \App\Test $board
      * @return \Illuminate\Http\Response
      */
     public function destroy(Test $board)
@@ -104,6 +110,6 @@ class BoardController extends Controller
         $board->delete();
 
         return redirect()->route('board.index')
-            ->with('success','Message deleted successfully');
+            ->with('success', 'Message deleted successfully');
     }
 }
