@@ -10,6 +10,7 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
+
         $member = Member::where('name', $request->name)->where('password', $request->password)->first();
         $token = Str::random(10);
         if($member){
@@ -17,7 +18,8 @@ class LoginController extends Controller
                     return redirect()->route(('board.index'),compact('token'));
 
             }
-        }else return "Wrong email or password！";
+        }
+        else return "Wrong email or password！";
     }
     public function create()
     {

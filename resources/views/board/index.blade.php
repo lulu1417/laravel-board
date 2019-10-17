@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex-center position-ref full-height">
         <div class="top-right home">
-            <a class="btn btn-success" href="{{ route('board.create') }}">Leave a message</a>
+            <a class="btn btn-success" href="{{ route('board.create') }}">Write an article</a>
             <a class="btn btn-success" href="{{ url('') }}">Login</a>
         </div>
         <div class="note full-height">
@@ -25,7 +25,8 @@
                         @csrf
                         @method('DELETE')
 
-                       <br> <button type="submit" style=" padding:5px 15px;
+                        <br>
+                        <button type="submit" style=" padding:5px 15px;
                 background:#FFCCCC;
                 color: #444444;
                 border:0 none;
@@ -40,7 +41,7 @@
                 @endforeach
                 </table>
                 <div class="bottom left position-abs content">
-                    There are {{$i}} messages.
+                    There are {{$i}} articles.
                 </div>
 
 @endsection

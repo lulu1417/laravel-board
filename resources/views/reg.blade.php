@@ -8,7 +8,7 @@
         <div class="content">
             <div class="m-b-md">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="warning">
                         <strong>Whoops!</strong> There were some problems with your input.<br><br>
                         <ul>
                             @foreach ($errors->all() as $error)
