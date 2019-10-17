@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','BoardController@index');
+Route::get('', function () {
+    return view('index');
+});
 Route::resource('products','ProductController');
 Route::resource('game','GuessController');
 Route::resource('board','BoardController');
+Route::resource('login','LoginController');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
@@ -16,8 +17,7 @@ class BoardController extends Controller
     {
         $messages = Test::latest()->paginate(5);
 //        dd($messages);
-
-        return view('board.index', compact('messages'))
+        return view('board.show', compact('messages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -55,17 +55,6 @@ class BoardController extends Controller
         return redirect()->route('board.index')
             ->with('success', 'message created successfully.');
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Test $board
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Test $board)
-    {
-        return view('board.show', compact('product'));
     }
 
     /**
