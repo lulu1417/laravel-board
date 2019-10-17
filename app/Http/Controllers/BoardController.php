@@ -16,7 +16,6 @@ class BoardController extends Controller
     public function index()
     {
         $messages = Test::latest()->paginate(5);
-//        dd($messages);
         return view('board.show', compact('messages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -78,8 +77,8 @@ class BoardController extends Controller
     public function update(Request $request, Test $board)
     {
         $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+            'subject' => 'required',
+            'content' => 'required',
         ]);
 
         $board->update($request->all());
@@ -97,8 +96,6 @@ class BoardController extends Controller
     public function destroy(Test $board)
     {
         $board->delete();
-
-        return redirect()->route('board.index')
-            ->with('success', 'Message deleted successfully');
+        return redirect()->route('board.index');
     }
 }

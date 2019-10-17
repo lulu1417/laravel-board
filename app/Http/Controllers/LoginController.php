@@ -14,7 +14,7 @@ class LoginController extends Controller
         $token = Str::random(10);
         if($member){
             if ($member->update(['token'=>$token])) { //update token
-                    return redirect()->route('board.index');
+                    return redirect()->route(('board.index'),compact('token'));
 
             }
         }else return "Wrong email or password！";
@@ -26,7 +26,6 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-//        dd('store');
         try {
             $request->validate([
                 'name' => ['required', 'unique:members'],
