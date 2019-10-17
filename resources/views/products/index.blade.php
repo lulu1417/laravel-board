@@ -25,7 +25,7 @@
             <th>Details</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($prod as $product)
+        @foreach ($products as $product)
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $product->name }}</td>
@@ -47,6 +47,6 @@
         @endforeach
     </table>
 
-    {!! $pro->links() !!}
+    {!! $products->links() !!}
 
 @endsection

@@ -13,15 +13,20 @@ class LoginController extends Controller
         $member = Member::where('name', $request->name)->where('password', $request->password)->first();
         $token = Str::random(10);
         if($member){
-            if ($member->update(['token'=>$token])) { //update api_token
-                    return redirect()->route('board.index')
-                        ->with('success', 'Login successfully.');
+            if ($member->update(['token'=>$token])) { //update token
+                    return redirect()->route('board.index');
+
             }
         }else return "Wrong email or password！";
+    }
+    public function create()
+    {
+        return view('reg');
     }
 
     public function store(Request $request)
     {
+//        dd('store');
         try {
             $request->validate([
                 'name' => ['required', 'unique:members'],
@@ -34,8 +39,7 @@ class LoginController extends Controller
                 'token' => $token,
             ]);
             if ($create) {
-                return redirect()->route('board.index')
-                    ->with('success', 'Registered successfully.');
+                return redirect()->route('board.index');
             }
         } catch (Exception $e) {
             sendError($e, 'Registered failed.', 500);

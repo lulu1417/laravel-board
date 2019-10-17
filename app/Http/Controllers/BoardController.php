@@ -65,7 +65,7 @@ class BoardController extends Controller
      */
     public function edit(Test $board)
     {
-        return view('board.edit', compact('product'));
+        return view('board.edit', compact('board'));
     }
 
     /**

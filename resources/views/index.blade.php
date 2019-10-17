@@ -1,44 +1,53 @@
-@extends('board.layout')
+@extends('main')
 @section('content')
     <div class="flex-center position-ref full-height">
         <div class="top-right home">
-{{--            <a class="btn btn-primary" href="{{ route('board.show') }}">Back</a>--}}
-            <a class="btn btn-success" href="{{ route('board.create') }}">Logout</a>
+            <a class="home" href="{{ route('login.create') }}">Register</a>
+            <a class="home" href="{{ route('board.index') }}">View</a>
         </div>
-
         <div class="content">
             <div class="m-b-md">
-                <form action="{{ route('board.login') }}" method="POST">
-                    @csrf
-
-                    <div class="row">
-                        <p><label for="subject">User Name：</label>
-                        <input type="text" id="name"
-                               style="font-family: 'Nunito';
-                               padding: 5px 15px;
-                               background: #FFCCCC;
-                               border: 0 none;
-                               -webkit-border-radius: 5px;
-                               font-size:20px;
-                               width:300px;
-                               height:30px;"
-                               name="subject" placeholder="name"/><br/>
-                        <p><label for="password">Password：</label>
-                            <input type="text" id="password"
-                                   style="font-family: 'Nunito';
-                               padding: 5px 15px;
-                               background: #FFCCCC;
-                               border: 0 none;
-                               -webkit-border-radius: 5px;
-                               font-size:20px;
-                               width:300px;
-                               height:30px;"
-                                   placeholder="password"/><br/>
+                @if ($errors->any())
+                    <div class="warning">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
+                @endif
 
-
-        </div>
-                <button type="submit" style=" padding:5px 15px;
+                <form action="{{ route('login.index') }}" method="POST">
+                    @csrf
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <p>User Name:
+                                <input type="text" name="name" style="font-family: 'Nunito';
+                               padding: 5px 15px;
+                               background: #FFCCCC;
+                               border: 0 none;
+                               -webkit-border-radius: 5px;
+                               font-size:20px;
+                               width:300px;
+                               height:30px;" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <p>Password:
+                                <input type="password" style="font-family: 'Nunito';
+                               padding: 5px 15px;
+                               background: #FFCCCC;
+                               border: 0 none;
+                               -webkit-border-radius: 5px;
+                               font-size:20px;
+                               width:300px;
+                               height:30px;" name="password" class="form-control" placeholder="password">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button type="submit" style=" padding:5px 15px;
                 background:#FFCCCC;
                 color: #444444;
                 border:0 none;
@@ -46,21 +55,10 @@
                 -webkit-border-radius: 5px;
                 border-radius: 5px;
                 font-family: 'Nunito', sans-serif;
-                font-size: 19px;" class="btn btn-primary">Submit
-                </button>
+                font-size: 19px;" class="btn btn-primary">Login
+                    </div>
+                </form>
             </div>
-            <div class="warning">
-                @if ($errors->any())
-                    <strong>Whoops!</strong> There were some problems with your input.<br>
-
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-
-                @endif
-            </div>
-        </div>
-
-
-        </form>
 @endsection
+
+

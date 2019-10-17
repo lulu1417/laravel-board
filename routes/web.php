@@ -17,3 +17,5 @@ Route::resource('products','ProductController');
 Route::resource('game','GuessController');
 Route::resource('board','BoardController');
 Route::resource('login','LoginController');
+Route::post('login/index','LoginController@index')->name('login.index');
+

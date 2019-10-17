@@ -3,7 +3,7 @@
     <div class="flex-center position-ref full-height">
         <div class="top-right home">
             <a class="btn btn-primary" href="{{ route('board.index') }}">Back</a>
-            <a class="btn btn-success" href="{{ route('board.create') }}">Logout</a>
+            <a class="btn btn-primary" href="{{ url('/') }}">Logout</a>
         </div>
 
 
