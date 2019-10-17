@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3c70198-5fa9-43ba-9aec-e4466af84cab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/board/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BoardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/board/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/board/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/board/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/board/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +163,7 @@
       <workItem from="1571204944453" duration="1891000" />
       <workItem from="1571217203306" duration="12259000" />
       <workItem from="1571277543601" duration="7644000" />
-      <workItem from="1571285303485" duration="11212000" />
+      <workItem from="1571285303485" duration="12331000" />
     </task>
     <servers />
   </component>

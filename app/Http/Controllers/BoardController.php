@@ -16,7 +16,7 @@ class BoardController extends Controller
     public function index()
     {
         $messages = Test::latest()->paginate(5);
-        return view('board.show', compact('messages'))
+        return view('board.index', compact('messages'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -28,6 +28,16 @@ class BoardController extends Controller
     public function create()
     {
         return view('board.create');
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Test $board)
+    {
+        return view('board.show',compact('board'));
     }
 
     /**
