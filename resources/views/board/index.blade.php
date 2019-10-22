@@ -14,18 +14,34 @@
                     {{ $product->name }}
                     <br>Subject：
                     {{ $product->subject }}
-                    <br>Details：
+                    <br>Content：
                     {{ $product->content }}
                     <form action="{{ route('board.destroy',$product->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('board.show',$product->id) }}">Show</a>
-
-                        <a class="btn btn-primary" href="{{ route('board.edit',$product->id) }}">Edit</a>
+                        <a style=" padding:5px 15px;
+                background:#FFCCCC;
+                color: #444444;
+                border:0 none;
+                cursor:pointer;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+                font-family: 'Nunito', sans-serif;
+                font-size: 19px;" href="{{ route('board.show',$product->id) }}">Show</a>
+                        <br>
+                        <a style=" padding:5px 15px;
+                background:#FFCCCC;
+                color: #444444;
+                border:0 none;
+                cursor:pointer;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+                font-family: 'Nunito', sans-serif;
+                font-size: 19px;" href="{{ route('board.edit',$product->id) }}">Edit</a>
 
                         @csrf
                         @method('DELETE')
 
-                        <br>
+
                         <button type="submit" style=" padding:5px 15px;
                 background:#FFCCCC;
                 color: #444444;

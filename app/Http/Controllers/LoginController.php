@@ -15,7 +15,8 @@ class LoginController extends Controller
         $token = Str::random(10);
         if($member){
             if ($member->update(['token'=>$token])) { //update token
-                    return redirect()->route(('board.index'),compact('token'));
+                session(['token' => $token]);
+                    return redirect()->route('board.index');
 
             }
         }
@@ -23,7 +24,7 @@ class LoginController extends Controller
     }
     public function create()
     {
-        return view('reg');
+        return view('register');
     }
 
     public function store(Request $request)
